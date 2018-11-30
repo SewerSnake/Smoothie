@@ -27,7 +27,15 @@ namespace MedicineTracker.Pages
             // Declare and initialise our Model Binding Context
             this.BindingContext = new EditMedicineItemPageViewModel(DependencyService.Get<INavigationService>());
             SetBinding(Page.TitleProperty, new Binding(EditMedicineItemPageViewModel.TitlePropertyName));
+
+            //CameraButton.Clicked += CameraButton_Clicked;
         }
+
+        private async void CameraButton_Clicked(object sender, EventArgs e)         {
+            // An error occurs here...
+            var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions() { });
+
+            if (photo != null)             {                 TestImage.Source = ImageSource.FromStream(() => { return photo.GetStream(); });             }         } 
 
         private Action Save()
         {
