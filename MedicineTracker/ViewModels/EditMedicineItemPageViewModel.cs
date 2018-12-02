@@ -1,16 +1,21 @@
 ﻿//
 //  EditMedicineItemPageViewModel.cs
-//  Handle Adding or Editing of Medicine Items
+//  Handle Adding or Editing of Smoothie Items
 
 using System;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using MedicineTracker.Models;
 using MedicineTracker.Services;
+using MedicineTracker.Validation;
 
 namespace MedicineTracker.ViewModels
 {
     public class EditMedicineItemPageViewModel : BaseViewModel
     {
+        IsNotNullOrEmptyRule<string> rule = new IsNotNullOrEmptyRule<string>();
+
+
         // Create and declare our ViewModel class constructor
         public EditMedicineItemPageViewModel(INavigationService navService) : base(navService)
         {
@@ -27,10 +32,14 @@ namespace MedicineTracker.ViewModels
             }
         }
 
-        // Checks to see if we have entered in a Brand Name and Description
+        // Checks to see if we have entered in a Brand Name
+        // and Description using validation
         public bool Save()
         {
-            if (App.SelectedItem != null && !string.IsNullOrEmpty(App.SelectedItem.BrandName) && !string.IsNullOrEmpty(App.SelectedItem.Description))
+            var brandName = App.SelectedItem.BrandName;
+            var description = App.SelectedItem.Description;
+
+            if (App.SelectedItem != null && rule.Check(brandName) && rule.Check(description))
             {
                 new Database.Database().SaveItem(App.SelectedItem);
             }
