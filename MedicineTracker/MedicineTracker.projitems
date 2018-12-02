@@ -36,5 +36,10 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Database\Database.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Smoothie.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validations\IsNotNullOrEmptyRule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validations\IValidationRule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Validations\" />
   </ItemGroup>
 </Project>

@@ -23,7 +23,7 @@ namespace MedicineTracker.ViewModels
             // If we are creating a new item, we need to update the title
             //if (App.SelectedItem == null)
             if (App.SelectedSmoothie == null)
-                {
+            {
                     Title = "Add Smoothie Details";
                     //App.SelectedItem = new MedicineItem();
                     //DateDoseTaken = DateTime.Now;
