@@ -1,43 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MedicineTracker.Pages.EditMedicineItemPage">
     <ContentPage.Content>
-        <StackLayout>
-            <TableView HasUnevenRows="true">
-                <TableView.Root>
-                    <TableSection Title="Smoothie Details">
-                        <ViewCell>
+        
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TableView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                   Intent="Form" HasUnevenRows="true">
+                
+                <TableSection>
+                    <!--<ViewCell Height="100"> ERIKS
+                    <Image Source="blender.png"/>
+                        </ViewCell>-->
+                    <ViewCell>
                             <StackLayout Padding="20,0,0,0" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                 <Image x:Name="TestImage" Aspect="AspectFit" Source="blender.png" WidthRequest="70" HeightRequest="70" VerticalOptions="FillAndExpand" />
                                 <!--<Button x:Name="CameraButton" Text="Take Photo"/>-->
                             </StackLayout>
                         </ViewCell>
-                        <EntryCell Label="Brand Name:" Text="{Binding BrandName, Mode=TwoWay}">
-                        </EntryCell>
-                        <EntryCell Label="Description:" Text="{Binding Description, Mode=TwoWay}">
-                        </EntryCell>
-                        <EntryCell Label="Side Effects:" Text="{Binding SideEffects, Mode=TwoWay}">
-                        </EntryCell>
-                    </TableSection>
-                    <TableSection Title="Dosage Details">
-                        <EntryCell Label="Dosage:" Text="{Binding Dosage, Mode=TwoWay}">
-                        </EntryCell>
-                        <ViewCell>
-                            <StackLayout Padding="20,0,0,0" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                <Label Text="Date Dose Taken:" HorizontalOptions="Fill" YAlign="Center" />
-                                <DatePicker Date="{Binding DateDoseTaken, Mode=TwoWay}" Format="dd-MM-yyyy" HorizontalOptions="FillAndExpand" TextColor="Green">
-                                </DatePicker>
-                            </StackLayout>
-                        </ViewCell>
-                        <ViewCell>
-                            <StackLayout Padding="20,0,0,0" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                <Label Text="Time Dose Taken:" HorizontalOptions="Fill" YAlign="Center" />
-                                <TimePicker Time="{Binding TimeDoseTaken, Mode=TwoWay}" HorizontalOptions="FillAndExpand" TextColor="Red">
-                                </TimePicker>
-                            </StackLayout>
-                        </ViewCell>
-                    </TableSection>
-                </TableView.Root>
-            </TableView>
-        </StackLayout>
+                </TableSection>
+                
+            <TableSection Title="Smoothie">
+                <EntryCell x:Name="smoothieNameCell" Label="Name:" Text="{Binding Name, Mode=TwoWay}"/>
+            </TableSection>
+            
+            <TableSection Title="Ingredients">
+                <ViewCell Height="30">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="50*" />
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="ingredientsCell" Grid.Column="0" Text="Ingredient"/>
+                        <Label x:Name="amountCell" Grid.Column="1" Text="Amount (ml)"/>
+                    </Grid>
+                </ViewCell>
+                  
+                <ViewCell>
+                    <StackLayout Padding="10,0,0,0" Orientation="Horizontal">
+                      <StackLayout Orientation="Horizontal">
+                        <Label Text="Ingr." />
+                        <Entry Text="{Binding TestIngredient}"/>
+                      </StackLayout>
+                      <StackLayout Orientation="Horizontal">
+                        <Label Text="Amount (ml)" />
+                        <Entry Text="200" />
+                      </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+                    
+                <ViewCell>
+                <Button x:Name="addIngredientButton" Text="Add Ingredient" Clicked="AddRow_Clicked"/>
+                </ViewCell>
+            </TableSection>
+            
+            <TableSection Title="Description">
+                <ViewCell>
+                    <StackLayout Padding="15">
+                        <Editor x:Name="descriptionCell" Text="{Binding Description, Mode=TwoWay}"/>
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+        </TableView>
+    </Grid>
+        
     </ContentPage.Content>
 </ContentPage>

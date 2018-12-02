@@ -35,7 +35,7 @@ namespace MedicineTracker.Pages
             // An error occurs here...
             var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions() { });
 
-            if (photo != null)             {                 TestImage.Source = ImageSource.FromStream(() => { return photo.GetStream(); });             }         } 
+            if (photo != null)             {                 TestImage.Source = ImageSource.FromStream(() => { return photo.GetStream(); });             }         }
 
         private Action Save()
         {
@@ -61,6 +61,26 @@ namespace MedicineTracker.Pages
                 }
             };
         }
+
+        // MILJA START
+
+        private void AddRow_Clicked(object sender, EventArgs args)
+        {
+            // Let ViewModel know that more rows are needed.
+        }
+
+        private void GetNutrition_Clicked(object sender, EventArgs args)
+        {
+            // 1. Get Inserted ingredients and amounts
+            //      - Add all to Smoothie ingredients array
+            
+
+            // 2. Fetch nutrition for each item
+
+            // 3. Calculate total nutrition value
+        }
+
+        // MILJA END
 
         ToolbarItem toolbarItem;
 

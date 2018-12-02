@@ -35,5 +35,6 @@
       <DependentUpon>EditMedicineItemPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Database\Database.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Smoothie.cs" />
   </ItemGroup>
 </Project>

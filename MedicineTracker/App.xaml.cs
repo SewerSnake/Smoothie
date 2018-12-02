@@ -38,7 +38,8 @@ namespace MedicineTracker
 
         // Declare our Medicine Item model that we will use to store
         // our temporary medicine details
-        public static MedicineItem SelectedItem { get; set; }
+        //public static MedicineItem SelectedSmoothie { get; set; }
+        public static Smoothie SelectedSmoothie { get; set; }   // Smoothie vs. of above
 
         protected override void OnStart()
         {
