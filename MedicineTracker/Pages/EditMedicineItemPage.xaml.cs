@@ -43,7 +43,8 @@ namespace MedicineTracker.Pages
         }
 
         private async void CameraButton_Clicked(object sender, EventArgs e)         {
-            // An error occurs here...
+            // An error occurs here... Because of lacking Xam.Plugin.Media in
+            // MedicineTracker folder?
             var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions() { });
 
             if (photo != null)             {                 TestImage.Source = ImageSource.FromStream(() => {
